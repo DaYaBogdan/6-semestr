@@ -68,5 +68,16 @@ grid on;
 title('Furie Transform simetrical');
 
 %% -------- ПОСТРОЕНИЕ ДИСКРЕТНЫХ ФУНКЦИЙ ПСМ -------- %%
-g_asi=fft(c_akf);
-g_sim=fftshift(g_asi);
+c_akf_padded = [c_akf(:); zeros(n_soob - length(c_akf), 1)];   % столбец той же длины, что и s_asi
+g_asi = fft(c_akf_padded);   % теперь длина 4096
+g_sim = fftshift(g_asi);
+
+% ПСМ как модуль спектра АКФ (асимметричный вариант)
+PSD_asi = abs(g_asi);
+
+figure;
+stem(f_asi, PSD_asi, '.', 'MarkerSize', 4);
+xlabel('Частота, Гц');
+ylabel('Модуль спектра АКФ (ПСМ)');
+title('Спектральная плотность мощности (модель 2)');
+grid on;
