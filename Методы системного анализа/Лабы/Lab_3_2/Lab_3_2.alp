@@ -1255,7 +1255,7 @@
 					<Id>1779636815056</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-9404272</Color>
-					<Expression2><![CDATA[delay.statsUtilization.mean()]]></Expression2>
+					<Expression2><![CDATA[queue.statsSize.mean()]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>

@@ -135,39 +135,6 @@
 			</Variables>
 			<Connectors>
 				<Connector>
-					<Id>1779640762153</Id>
-					<Name><![CDATA[connector1]]></Name>
-					<X>320</X><Y>50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[lab_3_3]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[queue1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[lab_3_3]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[SelectOutput]]></ClassName>
-						<ItemName><![CDATA[outT]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-70</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1779640768211</Id>
 					<Name><![CDATA[connector2]]></Name>
 					<X>240</X><Y>60</Y>
@@ -566,6 +533,39 @@
 						<Point><X>-70</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
+				<Connector>
+					<Id>1779879049053</Id>
+					<Name><![CDATA[connector1]]></Name>
+					<X>250</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[lab_3_3]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutput]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+						<ItemName><![CDATA[outT]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[lab_3_3]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[queue1]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>70</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
 			</Connectors>
 			<AgentLinks>
 				<AgentLink>
@@ -728,6 +728,9 @@
 										</GenericParameterSubstituteReference>
 									</GenericParameterSubstitute>
 									<Parameters>
+										<Parameter>
+											<Name><![CDATA[orderNumber]]></Name>
+										</Parameter>
 									</Parameters>
 									<ReplicationFlag>true</ReplicationFlag>
 									<Replication Class="CodeValue">
@@ -2126,11 +2129,21 @@ count++;]]></Code>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Средняя длина очереди]]></Title>
+						<Title><![CDATA[Средняя длина очереди (Нечёт)]]></Title>
 					<Id>1779642486399</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-32944</Color>
-					<Expression2><![CDATA[delay.statsUtilization.mean()]]></Expression2>
+					<Expression2><![CDATA[queue1.statsSize.mean()]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Средняя длина очереди (Чёт)]]></Title>
+					<Id>1779878938282</Id>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-13447886</Color>
+					<Expression2><![CDATA[queue.statsSize.mean()]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -2207,7 +2220,7 @@ count++;]]></Code>
 					<Id>1779644387046</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-9728477</Color>
-					<Expression2><![CDATA[timeToWait.dataset.getYMean()]]></Expression2>
+					<Expression2><![CDATA[timeToWait2.dataset.getYMean()]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
