@@ -1,0 +1,51 @@
+﻿<Window x:Class="MangaReader.ReaderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MangaReader"
+        mc:Ignorable="d"
+        Title="ReaderWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <Border Grid.Row="0" Background="#E0E0E0" Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content=" Предыдущая" Margin="5" Width="120" IsEnabled="False"/>
+
+                <TextBlock Text="Глава 1 из 10" VerticalAlignment="Center" Margin="20,0" FontWeight="Bold"/>
+                <Button Content="Следующая >>" Margin="5" Width="120"/>
+            </StackPanel>
+        </Border>
+
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Текст первой главы..." FontSize="14" TextWrapping="Wrap" LineHeight="1.4"/>
+
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." TextWrapping="Wrap" Margin="0,10"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Expander Grid.Row="2" Header="Комментарии к главе (4)" IsExpanded="False">
+            <StackPanel Margin="10">
+                <ListBox Height="150">
+                    <ListBoxItem>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Читатель1</TextBlock>
+                            <TextBlock>Интересная глава!</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                </ListBox>
+                <TextBox Margin="0,5" Height="50" TextWrapping="Wrap"/>
+                <Button Content="Отправить" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Expander>
+    </Grid>
+</Window>

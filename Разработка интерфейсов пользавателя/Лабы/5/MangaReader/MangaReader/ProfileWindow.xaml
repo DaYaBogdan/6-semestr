@@ -1,0 +1,48 @@
+﻿<Window x:Class="MangaReader.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MangaReader"
+        mc:Ignorable="d"
+        Title="ProfileWindow" Height="450" Width="800">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Личный кабинет" FontSize="24" FontWeight="Bold" Grid.Row="0" Margin="0,0,0,20"/>
+
+        <TabControl Grid.Row="1" Margin="0,0,0,20">
+            <TabItem Header="Просмотр">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Имя пользователя: manga_fan" Margin="0,5"/>
+                    <TextBlock Text="Email: fan@example.com" Margin="0,5"/>
+                    <TextBlock Text="Дата регистрации: 01.01.2024" Margin="0,5"/>
+                    <Button Content="Редактировать" Width="100" Margin="0,10,0,0"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Редактирование">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Имя:"/>
+                    <TextBox Text="manga_fan" Margin="0,2,0,10"/>
+                    <TextBlock Text="Email:"/>
+                    <TextBox Text="fan@example.com" Margin="0,2,0,10"/>
+                    <Button Content="Сохранить" Width="100"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Жалобы">
+                <ListBox Margin="10">
+                    <ListBoxItem>Жалоба на комментарий к главе 2 – "Спам"</ListBoxItem>
+                    <ListBoxItem>Жалоба на тайтл "Название" – "Неверный тег"</ListBoxItem>
+                </ListBox>
+            </TabItem>
+        </TabControl>
+
+     
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Выйти" Margin="5" Width="80" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window>
