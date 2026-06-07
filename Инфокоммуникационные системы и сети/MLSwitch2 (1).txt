@@ -1,0 +1,164 @@
+Switch(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/10, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/10, changed state to up
+
+Switch(config-if)#ip address 30.4.4.1 255.255.255.0
+Switch(config-if)#ex
+Switch(config)#ip routing
+Switch(config)#%IP-4-DUPADDR: Duplicate address 30.4.4.1 on FastEthernet0/10, sourced by 0000.0C93.370A
+%IP-4-DUPADDR: Duplicate address 30.4.4.1 on FastEthernet0/10, sourced by 0000.0C93.370A
+
+
+
+
+
+
+
+
+
+Switch con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+Switch>
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#int fa0/10
+Switch(config-if)#no sw
+Switch(config-if)#ip address 30.4.4.1 255.255.255.0
+Switch(config-if)#ex
+Switch(config)#ip routing
+Switch(config)#ip route 0.0.0.0 0.0.0.0 30.4.4.1
+%Invalid next hop address (it's this router)
+Switch(config)#ip route 0.0.0.0 0.0.0.0 30.4.4.2
+Switch(config)#do wr
+Building configuration...
+[OK]
+Switch(config)#ex
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+
+
+
+
+
+
+
+
+Switch con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+Switch>en
+Switch#sh ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 30.4.4.2 to network 0.0.0.0
+
+     10.0.0.0/24 is subnetted, 1 subnets
+C       10.4.4.0 is directly connected, FastEthernet0/2
+     30.0.0.0/24 is subnetted, 1 subnets
+C       30.4.4.0 is directly connected, FastEthernet0/10
+S*   0.0.0.0/0 [1/0] via 30.4.4.2
+Switch#
+
+
+
+
+
+
+
+
+Switch con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+Switch>e
+% Ambiguous command: "e"
+Switch>en
+Switch#sh ip route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 30.4.4.2 to network 0.0.0.0
+
+     10.0.0.0/24 is subnetted, 1 subnets
+C       10.4.4.0 is directly connected, FastEthernet0/2
+     30.0.0.0/24 is subnetted, 1 subnets
+C       30.4.4.0 is directly connected, FastEthernet0/10
+S*   0.0.0.0/0 [1/0] via 30.4.4.2
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#no ip route 0.0.0.0 0.0.0.0 30.4.4.2
+Switch(config)#ip route 172.20.0.0 255.255.0.0 30.4.4.2
+Switch(config)#ip route 192.168.4.0 255.255.255. 30.4.4.2
+                                    ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#ip route 192.168.4.0 255.255.255.0 30.4.4.2
+Switch(config)#do wr
+Building configuration...
+[OK]
+Switch(config)#
