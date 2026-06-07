@@ -1,0 +1,163 @@
+﻿<Window x:Class="PhoenixDiary.MastersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Список мастеров – PhoenixDiary" 
+        Height="500" Width="700"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель кнопок -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <!-- Кнопка Добавить -->
+            <Button x:Name="AddButton" 
+                    Click="OpenAddModal_Click"
+                    Margin="0,0,10,0" 
+                    Padding="10,8"
+                    Width="100">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Добавить" VerticalAlignment="Center"/>
+                    <TextBlock Text="+" Margin="5,0,0,0" FontSize="14" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+            <!-- Кнопка Удалить -->
+            <Button x:Name="DeleteButton" 
+                    Click="DeleteSelectedMasters_Click"
+                    Margin="0,0,10,0" 
+                    Padding="10,8"
+                    Width="100"
+                    IsEnabled="False">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Удалить" VerticalAlignment="Center"/>
+                    <TextBlock Text="🗑️" Margin="5,0,0,0" FontSize="12"/>
+                </StackPanel>
+            </Button>
+
+            <!-- Кнопка Выбрать все / Снять все -->
+            <Button x:Name="SelectAllButton" 
+                    Click="SelectAll_Click"
+                    Padding="10,8"
+                    Width="120">
+                <TextBlock x:Name="SelectAllText" Text="Выбрать все"/>
+            </Button>
+
+            <!-- Счётчик выбранных -->
+            <TextBlock x:Name="SelectedCountText" 
+                       Text="Выбрано: 0" 
+                       VerticalAlignment="Center" 
+                       Margin="20,0,0,0" 
+                       Foreground="Gray"/>
+        </StackPanel>
+
+        <!-- Разделитель -->
+        <Separator Grid.Row="1" Margin="0,0,0,10"/>
+
+        <!-- Таблица мастеров -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Заголовок таблицы (показывается, если есть мастера) -->
+                <Border x:Name="HeaderPanel" 
+                        Visibility="Collapsed"
+                        BorderBrush="#CCCCCC" 
+                        BorderThickness="0,0,0,2"
+                        Margin="0,0,0,5"
+                        Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" 
+                                   Text="Логин" 
+                                   FontWeight="Bold" 
+                                   Margin="20,0,0,0"/>
+                        <TextBlock Grid.Column="2" 
+                                   Text="Роль" 
+                                   FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+
+                <!-- Список мастеров -->
+                <ItemsControl x:Name="MastersListControl" ItemsSource="{Binding Masters}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#E0E0E0" 
+                                    BorderThickness="0,0,0,1" 
+                                    Padding="5"
+                                    Background="Transparent">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#F5F5F5"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Чекбокс выбора -->
+                                    <CheckBox Grid.Column="0" 
+                                              IsChecked="{Binding IsSelected}"
+                                              VerticalAlignment="Center"
+                                              Checked="MasterCheckBox_Checked"
+                                              Unchecked="MasterCheckBox_Unchecked"/>
+
+                                    <!-- Логин мастера -->
+                                    <TextBlock Grid.Column="1" 
+                                               Text="{Binding Login}" 
+                                               VerticalAlignment="Center"
+                                               Margin="20,0,0,0"/>
+
+                                    <!-- Роль -->
+                                    <TextBlock Grid.Column="2" 
+                                               Text="{Binding Role}" 
+                                               VerticalAlignment="Center">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Role}" Value="admin">
+                                                        <Setter Property="Foreground" Value="#E74C3C"/>
+                                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Role}" Value="master">
+                                                        <Setter Property="Foreground" Value="#27AE60"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Сообщение, если мастеров нет -->
+                <Border x:Name="EmptyStatePanel" 
+                        Visibility="Collapsed"
+                        Background="#F9F9F9" 
+                        Padding="40" 
+                        Margin="0,20,0,0">
+                    <TextBlock Text="Нет добавленных мастеров" 
+                               HorizontalAlignment="Center" 
+                               Foreground="#999"
+                               FontSize="14"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
