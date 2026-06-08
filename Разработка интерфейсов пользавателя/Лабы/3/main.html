@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Главная страница</title>
+    <style>
+      body {
+        font-family:
+          "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        margin-top: 20px;
+      }
+      ul {
+        margin-left: 20px;
+      }
+      li {
+        margin: 8px 0;
+      }
+      .controls {
+        background-color: #fff3e0;
+        border-left: 4px solid #f39c12;
+        padding: 10px 15px;
+        margin: 20px 0;
+      }
+      .see-also {
+        background-color: #e8f4fd;
+        border-left: 4px solid #3498db;
+        padding: 10px 15px;
+        margin-top: 30px;
+        font-style: italic;
+      }
+      .control-item {
+        font-weight: bold;
+        color: #e67e22;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Главная страница</h1>
+
+    <p>
+      Главная страница является центральным узлом приложения
+      PhoenixDiary. Здесь отображается основная рабочая область
+      — <strong>Дневник</strong>.
+    </p>
+
+    <h2>Дневник</h2>
+    <p>
+      На главной странице доступен
+      <strong>Дневник с отсортированными записями</strong>.
+      Записи сгруппированы по дням недели и привязаны к
+      конкретным датам, что позволяет быстро ориентироваться в
+      расписании.
+    </p>
+
+    <h2>Элементы управления</h2>
+    <div class="controls">
+      <ul>
+        <li>
+          <span class="control-item"
+            >➕ Добавление записи</span
+          >
+          — создание новой записи на выбранную дату и время
+        </li>
+        <li>
+          <span class="control-item">🗑️ Удаление записей</span>
+          — удаление существующих записей
+        </li>
+        <li>
+          <span class="control-item"
+            >◀ Предыдущая страница</span
+          >
+          — переход на предыдущую неделю
+        </li>
+        <li>
+          <span class="control-item"
+            >Следующая страница ▶</span
+          >
+          — переход на следующую неделю
+        </li>
+        <li>
+          <span class="control-item"
+            >🔄 Вернуться к текущей неделе</span
+          >
+          — быстрый возврат к актуальному расписанию
+        </li>
+      </ul>
+    </div>
+
+    <h2>Структура записи</h2>
+    <p>
+      Каждая запись в дневнике отображается в виде карточки,
+      содержащей следующую информацию:
+    </p>
+    <ul>
+      <li><strong>Время</strong> — время начала процедуры</li>
+      <li><strong>ФИО</strong> — имя клиента</li>
+      <li><strong>Цена</strong> — стоимость услуги</li>
+    </ul>
+
+    <div class="see-also">
+      <strong>См. также:</strong> <a href="#">Запись</a>,
+      <a href="#">Дневник</a>, <a href="#">Мастера</a>,
+      <a href="#">Клиенты</a>
+    </div>
+  </body>
+</html>

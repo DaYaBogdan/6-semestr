@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Мастера</title>
+    <style>
+      body {
+        font-family:
+          "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #c0392b;
+        margin-top: 20px;
+      }
+      ul {
+        margin-left: 20px;
+      }
+      li {
+        margin: 8px 0;
+      }
+      .controls {
+        background-color: #fdecea;
+        border-left: 4px solid #e74c3c;
+        padding: 10px 15px;
+        margin: 20px 0;
+      }
+      .restricted {
+        background-color: #fff3cd;
+        border: 1px solid #ffc107;
+        padding: 10px 15px;
+        margin: 20px 0;
+        color: #856404;
+        border-radius: 4px;
+      }
+      .control-item {
+        font-weight: bold;
+        color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Мастера</h1>
+
+    <div class="restricted">
+      <strong>🔒 Доступно только администраторам</strong><br />
+      Страница "Мастера" доступна исключительно пользователям с
+      правами администратора. Модераторы не имеют доступа к
+      этому разделу.
+    </div>
+
+    <p>
+      На странице <strong>Мастера</strong> осуществляется
+      управление списком сотрудников салона. Здесь можно
+      просматривать, добавлять и удалять мастеров.
+    </p>
+
+    <h2>Элементы управления</h2>
+    <div class="controls">
+      <ul>
+        <li>
+          <span class="control-item"
+            >◀ Предыдущая страница</span
+          >
+          — переход к предыдущей странице списка мастеров
+        </li>
+        <li>
+          <span class="control-item"
+            >Следующая страница ▶</span
+          >
+          — переход к следующей странице списка мастеров
+        </li>
+        <li>
+          <span class="control-item">➕ Добавить мастера</span>
+          — открытие формы для добавления нового мастера в базу
+        </li>
+        <li>
+          <span class="control-item">🗑️ Удалить мастера</span>
+          — удаление выбранного мастера из системы
+        </li>
+      </ul>
+    </div>
+
+    <h2>Примечание</h2>
+    <p>
+      При удалении мастера все связанные с ним будущие записи
+      требуют переназначения на другого специалиста. Система
+      запросит подтверждение перед удалением.
+    </p>
+  </body>
+</html>
